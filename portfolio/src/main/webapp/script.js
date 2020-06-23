@@ -15,16 +15,19 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
+function addRandomFact() {
+  const facts =
       ['I love soccer!', 'I do not like fruit desserts.', 'I loce the color blue!',
        'I do not like math.', 'I love writing and reading short stories!', 
-       'I do not like hot summers.', 'I love the mountains!', 'I do not like scary movies.'];
+       'I do not like hot summers.', 'I love the mountains!', 'I do not like scary movies.',
+       'I am a twin and my little sisters are twins!', 'Once, both of my arms were broken at the same time.',
+       'I collect mini soccer balls!', 'I am deathly afraid of heights.', 'My favorite word is oatmeal!',
+       'I do not like the sound of styrofoam.', 'My favorite food is watermelon!'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Pick a random fun fact.
+  const fact = facts[Math.floor(Math.random() * facts.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const factContainer = document.getElementById('fact-container');
+  factContainer.innerText = fact;
 }
