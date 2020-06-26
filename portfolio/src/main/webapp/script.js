@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random fact to the page.
  */
 function addRandomFact() {
   const facts =
@@ -24,7 +24,7 @@ function addRandomFact() {
        'I collect mini soccer balls!', 'I am deathly afraid of heights.', 'My favorite word is oatmeal!',
        'I do not like the sound of styrofoam.', 'My favorite food is watermelon!'];
 
-  // Pick a random greeting.
+  // Pick a random fact.
   const fact = facts[Math.floor(Math.random() * facts.length)];
 
   // Add it to the page.
@@ -39,4 +39,31 @@ function getHelloWorld() {
   fetch('/data').then(response => response.txt()).then((message) => {
     document.getElementById('message-container').innerText = message;
   });
+}
+
+/**
+ * Fetches comments from the server and adds them to the DOM.
+ */
+function getComments() {
+  fetch('/data').then(response => response.json()).then((commentsObject) => {
+
+  // Reference provided comments JSON to generate HTML elements
+  const comments = document.getElementById('comments-container');
+    comments.innerHTML = '';
+    comments.appendChild(
+        generateElement('First Name: ' + commentsObject.firstName));
+    comments.appendChild(
+        generateElement('Middle Name: ' + commentsObject.middleName));
+    comments.appendChild(
+        generateElement('Last Name: ' + commentsObject.lastName));
+  });
+}
+
+/** 
+ * Creates a <li> element containing text. 
+ */
+function generateElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
