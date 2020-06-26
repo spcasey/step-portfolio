@@ -24,10 +24,19 @@ function addRandomFact() {
        'I collect mini soccer balls!', 'I am deathly afraid of heights.', 'My favorite word is oatmeal!',
        'I do not like the sound of styrofoam.', 'My favorite food is watermelon!'];
 
-  // Pick a random fun fact.
+  // Pick a random greeting.
   const fact = facts[Math.floor(Math.random() * facts.length)];
 
   // Add it to the page.
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
+}
+
+/**
+ * Fetches message from the server and adds it to the DOM.
+ */
+function getHelloWorld() {
+  fetch('/data').then(response => response.txt()).then((message) => {
+    document.getElementById('message-container').innerText = message;
+  });
 }
