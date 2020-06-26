@@ -29,7 +29,12 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Initialize comments instance and include several hard-coded values as a test
+    // Send "hello world" message to test fetch function (Note - commented out for tutorial purposes)
+    /*String message = "Hello Sean!";
+    response.setContentType("text/html;");
+    response.getWriter().println(message);*/
+
+    // Initializes comments instance and includes several hard-coded values as a test
     ArrayList<String> commentsList = new ArrayList<String>();
     commentsList.add("Sean");
     commentsList.add("Patrick");
@@ -38,7 +43,7 @@ public class DataServlet extends HttpServlet {
     // Converts comments to JSON
     String comments = convertToJson(commentsList);
 
-    // Send new JSON as response
+    // Sends new JSON as response
     response.setContentType("application/json;");
     response.getWriter().println(comments);
   }

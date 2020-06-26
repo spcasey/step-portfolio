@@ -33,12 +33,12 @@ function addRandomFact() {
 }
 
 /**
- * Fetches message from the server and adds it to the DOM.
+ * Fetches "hello world" message from the server and adds it to the DOM.
  */
-function getHelloWorld() {
-  fetch('/data').then(response => response.txt()).then((message) => {
-    document.getElementById('message-container').innerText = message;
-  });
+async function getMessage() {
+  const message = await fetch('/data');
+  const messageText = await message.text();
+  document.getElementById('message-container').innerText = messageText;
 }
 
 /**
