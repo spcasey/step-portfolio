@@ -54,7 +54,8 @@
             <p>Were all stars to disappear or die,</p>
             <p>I should learn to look at an empty sky</p>
             <p>And feel its total dark sublime,</p>
-            <p>Though this might take me a little time.<br></p>
+            <p>Though this might take me a little time.</p>
+            <br/>
           <h3>I also love this Youtube channel - this video especially is worth a watch.</p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ipVxxxqwBQw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; 
               gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -73,11 +74,18 @@
             <a href="https://www.linkedin.com/in/sean-p-casey">Linkedin</a>
             <a href="https://github.com/spcasey">Github</a>
             <a href="https://www.stanforddaily.com/author/spcasey/">The Stanford Daily</a>
+            <br/>
         <h2 id="server-tests">Server Tests</h2>
-          <button onclick="getMessage()">Fetch a message!</button>
-          <div id ="message-container"></div>
           <button onclick="getComments()">Fetch comments!</button>
           <ul id="comments-container"></ul>
+          <form method="POST">
+            <p>What is your name?</p>
+            <textarea name="name-field"></textarea>
+            <br/>
+            <p>What are you thinking about right now?</p>
+            <textarea name="comment-field"></textarea>
+            <br/>
+            <input type="submit" />
     <div>
   </body>
 </html>

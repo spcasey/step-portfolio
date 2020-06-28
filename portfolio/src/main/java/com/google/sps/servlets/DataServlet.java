@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import com.google.gson.Gson;
 import java.util.*;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -21,60 +22,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** 
+/* 
  * Allows users to leave comments. 
  */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  // Initializes comments instance
+  private ArrayList<String> commentsList = new ArrayList<String>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Send "hello world" message to test fetch function (Note - commented out for tutorial purposes)
-    /*String message = "Hello Sean!";
-    response.setContentType("text/html;");
-    response.getWriter().println(message);*/
 
-    // Initializes comments instance and includes several hard-coded values as a test
-    ArrayList<String> commentsList = new ArrayList<String>();
-    commentsList.add("Sean");
-    commentsList.add("Patrick");
-    commentsList.add("Casey");
+    // Converts comments to JSON using Gson library
+    String comments = new Gson().toJson(commentsList);
     
-    // Converts comments to JSON
-    String comments = convertToJson(commentsList);
-
     // Sends new JSON as response
     response.setContentType("application/json;");
     response.getWriter().println(comments);
   }
 
-  /**
-   * Manually converts comments into a JSON string using concatentation. 
-   * (Temporary - see below)
-   */
-  private String convertToJson(ArrayList<String> arrList) {
-    String json = "{";
-    json += "\"firstName\": ";
-    json += "\"" + arrList.get(0) + "\"";
-    json += ", ";
-    json += "\"middleName\": ";
-    json += "\"" + arrList.get(1) + "\"";
-    json += ", ";
-    json += "\"lastName\": ";
-    json += "\"" + arrList.get(2) + "\"";
-    json += "}";
-    return json;
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      
+    // Reads user input and generates comment based off input
+    String name = request.getParameter("name-field");
+    String comment = request.getParameter("comment-field");
+    String fullComment = name + ": " + comment;
+    commentsList.add(fullComment);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
   }
-
-
-  /**
-   * Converts comments into a JSON string using the Gson library. 
-   * (Gson dependency currently broken - would prefer this method over above
-   * given its flexibility)
-   */
-  /*private String convertToJson(ArrayList<String> arrList) {
-    Gson gson = new Gson();
-    String json = gson.toJson(arrList);
-    return json;
-  }*/
 }

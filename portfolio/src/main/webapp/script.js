@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
+/*
  * Adds a random fact to the page.
  */
 function addRandomFact() {
@@ -32,37 +32,20 @@ function addRandomFact() {
   factContainer.innerText = fact;
 }
 
-/**
- * Fetches "hello world" message from the server and adds it to the DOM.
- */
-async function getMessage() {
-  const message = await fetch('/data');
-  const messageText = await message.text();
-  document.getElementById('message-container').innerText = messageText;
-}
-
-/**
- * Fetches comments from the server and adds them to the DOM.
+/*
+ * Fetches comments from the server, builds list of comments, and adds them to the DOM.
  */
 function getComments() {
   fetch('/data').then(response => response.json()).then((commentsObject) => {
-
-  // Reference provided comments JSON to generate HTML elements
-  const comments = document.getElementById('comments-container');
-    comments.innerHTML = '';
-    comments.appendChild(
-        generateElement('First Name: ' + commentsObject.firstName));
-    comments.appendChild(
-        generateElement('Middle Name: ' + commentsObject.middleName));
-    comments.appendChild(
-        generateElement('Last Name: ' + commentsObject.lastName));
+    const commentListElement = document.getElementById('comments-container');
+    commentsObject.forEach((comment) => commentListElement.appendChild(createListElement(comment)));
   });
 }
 
-/** 
+/* 
  * Creates a <li> element containing text. 
  */
-function generateElement(text) {
+function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
   return liElement;
