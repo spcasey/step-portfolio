@@ -14,6 +14,12 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
 import java.util.*;
 import java.io.IOException;
@@ -31,8 +37,22 @@ public class DataServlet extends HttpServlet {
   // Initializes comments instance
   private ArrayList<String> commentsList = new ArrayList<String>();
 
+  // Initializes persistent storage instance
+  private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    // Loads comments from persistent storage
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+    for (Entity storedComment : results.asIterable()) {
+        String name = (String) storedComment.getProperty("Name");
+        String text = (String) storedComment.getProperty("Text");
+        long time = (long) storedComment.getProperty("Time");
+        String entry = name + ": " + text + " (" + time + ")";
+        commentsList.add(entry);
+    }
 
     // Converts comments to JSON using Gson library
     String comments = new Gson().toJson(commentsList);
@@ -45,13 +65,19 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       
-    // Reads user input and generates comment based off input
+    // Reads user input to generates comment properties based off input
     String name = request.getParameter("name-field");
-    String comment = request.getParameter("comment-field");
-    String fullComment = name + ": " + comment;
-    commentsList.add(fullComment);
+    String text = request.getParameter("text-field");
+    long time = System.currentTimeMillis();
 
-    // Redirect back to the HTML page.
+    // Stores comment in persistent storage
+    Entity storedComment = new Entity("Comment");
+    storedComment.setProperty("Name", name);
+    storedComment.setProperty("Text", text);
+    storedComment.setProperty("Time", time);
+    datastore.put(storedComment);
+
+    // Redirects back to the HTML page
     response.sendRedirect("/index.html");
   }
 }

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /*
- * Adds a random fact to the page.
+ * Adds a random fun fact to the page.
  */
 function addRandomFact() {
   const facts =
@@ -24,10 +24,10 @@ function addRandomFact() {
        'I collect mini soccer balls!', 'I am deathly afraid of heights.', 'My favorite word is oatmeal!',
        'I do not like the sound of styrofoam.', 'My favorite food is watermelon!'];
 
-  // Pick a random fact.
+  // Picks a random fact
   const fact = facts[Math.floor(Math.random() * facts.length)];
 
-  // Add it to the page.
+  // Places fact on the page
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
 }
