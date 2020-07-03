@@ -57,10 +57,10 @@ function createListElement(text) {
 }
 
 /* 
- * Creates and populates a data table, instantiates the pie chart, 
+ * Creates and populates a data table, instantiates a pie chart, 
  * passes in the data, and draws it.
  */
-function drawChart() {
+function drawPieChart() {
 
   // Create the data table.
   var data = new google.visualization.DataTable();
@@ -76,10 +76,56 @@ function drawChart() {
 
   // Set chart options
   var options = {'title':'Sean Daily Schedule',
-    'width':400,
+    'width':600,
     'height':400};
 
   // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  var chart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
   chart.draw(data, options);
+}
+
+/* 
+ * Creates and populates a data table, instantiates an org chart, 
+ * passes in the data, and draws it.
+ */
+function drawOrgChart() {
+
+  // Create the data table
+  var orgData = new google.visualization.DataTable();
+  orgData.addColumn('string', 'Name');
+  orgData.addColumn('string', 'Manager');
+  orgData.addColumn('string', 'ToolTip');
+
+  // Add people to org chart
+  orgData.addRows([
+    ['Abbey', '', 'Senior Director of Principal Operations'],
+    ['Courtenay', 'Abbey', 'Director of Scheduling'],
+    ['Matt', 'Abbey', 'Director of Advance'],
+    ['Derrek', 'Abbey', 'Director of Briefings and Correspondence'],
+    ['Tess', 'Abbey', 'Spouse Chief of Staff'],
+    ['Max', 'Abbey', 'Director of Candidate Operations'],
+    ['Emily A.', 'Abbey', 'Surrogates Chief of Staff'],
+    ['Ebba', 'Courtenay', 'Principal Scheduler']
+    ['Sean', 'Courtenay', 'Principal Operations Associate'],
+    ['Juliana', 'Matt', 'Advance Desk'],
+    ['Kabir', 'Matt', 'Advance Lead'],
+    ['Cambria', 'Matt', 'Advance Lead'],
+    ['Tori', 'Matt', 'Advance Lead'],
+    ['David', 'Derrek', 'Correspondence Manager'],
+    ['Deion', 'Tess', 'Spouse Scheduler'],
+    ['Emily V.', 'Tess', 'Spouse Special Assistant'],
+    ['Nina', 'Max', 'Traveling Press Secretary'],
+    ['Saralena', 'Max', 'Special Assistant to the Candidate'],
+    ['Chuck', 'Max', 'Traveling Photographer'],
+    ['Constance', 'Emily A.', 'Surrogates Communications Director'],
+    ['Catherine', 'Emily A.', 'Surrogates Scheduler'],
+    ['Heather', 'Emily A.', 'Surrogates Travel Manager'],
+    ['DJ', 'Emily A.', 'Surrogates Digital Director']
+  ]);
+
+  // Create the chart
+  var chart = new google.visualization.OrgChart(document.getElementById('org-chart-container'));
+        
+  // Draw the chart, setting the allowHtml option to true for the tooltips
+  chart.draw(orgData, {'allowHtml':true});
 }
