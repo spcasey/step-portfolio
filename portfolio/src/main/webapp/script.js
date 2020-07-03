@@ -56,11 +56,31 @@ function createListElement(text) {
   return liElement;
 }
 
-/*
- * Deletes all data.
+/* 
+ * Creates and populates a data table, instantiates the pie chart, 
+ * passes in the data, and draws it.
  */
-function deleteData() {
-  fetch('/delete-data').Promise.then((commentsObject) => {
-    commentsObject.forEach(comment).commentListElement.appendChild(createListElement(comment));
-  });
+function drawChart() {
+
+  // Creates the data table
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Activity');
+  data.addColumn('number', 'Hours');
+  data.addRows([
+    ['Working Hours', 10],
+    ['Sleeping Hours', 8],
+    ['Social Hours', 3]
+    ['Reading Hours', 2],
+    ['Eating Hours', 1],
+  ]);
+
+  // Sets chart options
+  const options = {'title':'Daily Schedule of Sean',
+    'width':400,
+    'height':400};
+
+  // Instantiates and draw the chart, passing in some options
+  var chart = new google.visualization.PieChart(document.getElementById('chart-container'));
+  chart.draw(data, options);
 }
+
