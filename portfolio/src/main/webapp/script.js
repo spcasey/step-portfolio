@@ -38,7 +38,12 @@ function addRandomFact() {
 function getComments() {
   fetch('/data').then(response => response.json()).then((commentsObject) => {
     const commentListElement = document.getElementById('comments-container');
-    commentsObject.forEach((comment) => commentListElement.appendChild(createListElement(comment)));
+    const commentLimit = document.getElementById('comment-limit');
+    for (var i = 0; i < commentLimit; i++) {
+      const comment = commentsObject[i];
+      commentListElement.appendChild(createListElement(comment));
+    }
+    location.reload();
   });
 }
 
@@ -49,4 +54,13 @@ function createListElement(text) {
   const liElement = document.createElement('li');
   liElement.innerText = text;
   return liElement;
+}
+
+/*
+ * Deletes all data.
+ */
+function deleteData() {
+  fetch('/delete-data').Promise.then((commentsObject) => {
+    commentsObject.forEach(comment).commentListElement.appendChild(createListElement(comment));
+  });
 }

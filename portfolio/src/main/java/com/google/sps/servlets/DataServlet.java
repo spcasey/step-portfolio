@@ -43,6 +43,14 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+    // Get user input for number of comments listed.
+    int commentLimit = getCommentLimit(request);
+    if (commentLimit == -1) {
+      response.setContentType("text/html");
+      response.getWriter().println("Please enter a valid integer");
+      return;
+    }
+
     // Loads comments from persistent storage
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
@@ -65,7 +73,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       
-    // Reads user input to generates comment properties based off input
+    // Reads user input to generates comment properties
     String name = request.getParameter("name-field");
     String text = request.getParameter("text-field");
     long time = System.currentTimeMillis();
@@ -79,5 +87,29 @@ public class DataServlet extends HttpServlet {
 
     // Redirects back to the HTML page
     response.sendRedirect("/index.html");
+  }
+
+  /*
+   * Returns comment limit selected by user or -1 if input is invalid.
+   */
+  private int getCommentLimit(HttpServletRequest request) {
+    // Get input from the form
+    String commentLimitInput = request.getParameter("comment-limit");
+
+    // Convert input to an int
+    int commentLimit;
+    try {
+      commentLimit = Integer.parseInt(commentLimitInput);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + commentLimitInput);
+      commentLimit = -1;
+    }
+
+    if (commentLimit < 0) {
+      System.err.println("Input is not a nonnegative number: " + commentLimitInput);
+      commentLimit = -1;
+    }
+
+    return commentLimit;
   }
 }
