@@ -43,7 +43,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-    // Get user input for number of comments listed.
+    // Get user input for number of comments listed
     int commentLimit = getCommentLimit(request);
     if (commentLimit == -1) {
       response.setContentType("text/html");
@@ -73,7 +73,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       
-    // Reads user input to generates comment properties
+    // Reads user input to generate comment properties
     String name = request.getParameter("name-field");
     String text = request.getParameter("text-field");
     long time = System.currentTimeMillis();
@@ -93,6 +93,7 @@ public class DataServlet extends HttpServlet {
    * Returns comment limit selected by user or -1 if input is invalid.
    */
   private int getCommentLimit(HttpServletRequest request) {
+
     // Get input from the form
     String commentLimitInput = request.getParameter("comment-limit");
 

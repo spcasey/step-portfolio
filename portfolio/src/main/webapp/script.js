@@ -62,7 +62,7 @@ function createListElement(text) {
  */
 function drawPieChart() {
 
-  // Create the data table.
+  // Create the data table
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Activity');
   data.addColumn('number', 'Hours');
@@ -79,7 +79,7 @@ function drawPieChart() {
     'width':600,
     'height':400};
 
-  // Instantiate and draw our chart, passing in some options.
+  // Instantiate and draw chart, passing in some options
   var chart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
   chart.draw(data, options);
 }
@@ -126,6 +126,34 @@ function drawOrgChart() {
   // Create the chart
   var chart = new google.visualization.OrgChart(document.getElementById('org-chart-container'));
         
-  // Draw the chart, setting the allowHtml option to true for the tooltips
+  // Draw the chart, setting the allowHtml option to true for tooltips
   chart.draw(orgData, {'allowHtml':true});
+}
+
+/*
+ * Translate input into new language.
+ */
+function getTranslation() {
+
+  // Get text to be translated and target language from user input
+  const text = document.getElementById('text-field').value;
+  const languageCode = document.getElementById('languages').value;
+
+  // Set output to be input text field
+  const resultContainer = document.getElementById('text-field');
+
+  // Add text and target language to query string
+  const params = new URLSearchParams();
+  params.append('text', text);
+  params.append('languageCode', languageCode);
+
+  // Send information to translation servlet to perform translation and
+  // display translated message on page
+  fetch('/translate', {
+    method: 'POST',
+    body: params
+  }).then(response => response.text())
+  .then((translatedMessage) => {
+    resultContainer.innerText = translatedMessage;
+  });
 }

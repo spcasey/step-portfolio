@@ -5,12 +5,10 @@
     <title>Test Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
-    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']}, {'packages':['orgchart']});
-      google.charts.load('current', {'packages':["orgchart"]});
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawPieChart);
       google.charts.setOnLoadCallback(drawOrgChart);
@@ -25,7 +23,7 @@
           <a href="#favorite-media">Favorite Media</a> |
           <a href="#miscellaneous">Miscellaneous</a> |
           <a href="#server-tests">Server Tests</a>
-        <nav>
+        </nav>
         <h2 id="about-me">About Me</h2>
           <p>My name is Sean! I live in South Bend (by Notre Dame) with my parents and sisters.</p>
           <img src="images/notredame.jpg" alt="Golden Dome at Notre Dame" width="600" height="350">
@@ -102,6 +100,15 @@
             <p>What are you thinking about right now?</p>
             <textarea name="text-field"></textarea>
             <br/>
+            <p>Translate your comment into a different language!</p>
+            <select name="languages" id="languages">
+              <option value="ar">Arabic</option>
+              <option value="zh">Chinese</option>
+              <option value="hi">Hindi</option>
+              <option value="ja">Japanese</option>
+              <option value="es">Spanish</option>
+            </select>
+            <button onclick="getTranslation();">Translate</button>
             <input type="submit" />
     </div>
   </body>
