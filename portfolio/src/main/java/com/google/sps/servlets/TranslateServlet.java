@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * Allows users to translate their comments prior to posting.
  */
 @WebServlet("/translate")
-public class TranslationServlet extends HttpServlet {
+public class TranslateServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
