@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbNMqtlqZBt0ee3t97dFVUPyBP6s4Tz2c&callback=generateMap"
+    async defer></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -67,7 +71,7 @@
         ['Juliana', 'Matt', 'Advance Desk'],
         ['David', 'Derrek', 'Correspondence Manager'],
         ['Deion', 'Tess', 'Spouse Scheduler'],
-        ['Catherine', 'Emily A.', 'Surrogate Scheduler'],
+        ['Catherine', 'Emily', 'Surrogate Scheduler'],
       ]);
 
       // Create the chart
@@ -123,7 +127,7 @@
         <img src="images/notredame (1).jpg" class="img-responsive" style="width:100%" alt="Golden Dome at Notre Dame">
       </div>
       <div class="col-sm-3">
-        <p>I have a twin sister and two little twin sisters.</p>
+        <p>I have a twin sister and two younger twin sisters.</p>
         <img src="images/seanandsisters.jpg" class="img-responsive" style="width:100%" alt="A boy and three girls in school uniforms">
       </div>
       <div class="col-sm-3"> 
@@ -235,12 +239,13 @@
     </div>
   </div><br><br>
 
-<div class="container-fluid text-center" id="server-tests">    
+  <div class="container-fluid text-center" id="server-tests">    
     <div class="row content">
-      <div class="col-sm-2 sidenav">
-      </div>
+      <div class="col-sm-2 sidenav"></div>
       <div class="col-sm-8 text-left"> 
         <h2 id="server-tests">Server Tests</h2>
+      <h3>Map Test!</h3>
+        <div id="map"></div>
       <h3>Daily Activities</h3>
         <div id="pie-chart-container" style="width: 900px; height: 500px;"></div><br>
       <h3>PFA Org Chart (mouse over for details)</h3>
@@ -264,9 +269,9 @@
           </select>
           <button onclick="getTranslation();">Translate</button><br><br>
           <input type="submit" />
+        </form>
       </div>
-      <div class="col-sm-2 sidenav">
-      </div>
+      <div class="col-sm-2 sidenav"></div>
     </div>    
   </div><br><br>
 

@@ -24,12 +24,12 @@ footer {
 }
 
 .fa {
-  padding: 200px;
-  font-size: 300px;
-  width: 200px;
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
   text-align: center;
   text-decoration: none;
-  margin: 50px 20px;
+  margin: 10px 2px;
 }
 
 .fa:hover {
@@ -49,4 +49,10 @@ footer {
 .fa-rss {
   background: #ff6600;
   color: white;
+}
+
+#map {
+  border: thin solid black;
+  height: 500px;
+  width: 500px;
 }
