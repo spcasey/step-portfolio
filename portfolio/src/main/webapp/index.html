@@ -1,104 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Test Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-    </script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>Sean's Portfolio</h1>
-        <nav>
-          <a href="#about-me">About Me</a> |
-          <a href="#career-stuff">Career Stuff</a> |
-          <a href="#favorite-media">Favorite Media</a> |
-          <a href="#miscellaneous">Miscellaneous</a> |
-          <a href="#server-tests">Server Tests</a>
-        <nav>
-        <h2 id="about-me">About Me</h2>
-          <p>My name is Sean! I live in South Bend (by Notre Dame) with my parents and sisters.</p>
-          <img src="images/notredame.jpg" alt="Golden Dome at Notre Dame" width="600" height="350">
-          <p>I was originally born in Denver, Colorado, up in the mountains.</p>
-          <img src="images/colorado.jpg" alt="Denver with mountains in background" width="600" height="350">    
-          <p>Next year, I'm going to be a sophomore at Stanford.</p>
-          <img src="images/stanford.jpg" alt="Scenic Stanford courtyard" width="600" height="350">
-          <p>In the upcoming months, I will also be working to increase voter access in preparation for the 2020 election. I'm always looking for ideas on how we can get out the vote!</p>
-          <p>I can't wait to get to know you guys this summer!</p>
-        <h2 id="career-stuff">Career Stuff</h2>
-          <h3>Work History</h3>
-            <p>Over the past year, I've worked for a presidential campaign and the Department of Justice in the Voting Section. Now I'm excited to be a Noogler!</p>
-            <img src="images/pete.jpg" alt="Pete Buttigieg" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/pollingplace.jpg" alt="A sign directing people to the polls" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/googlehq.jpg" alt="Google's Mountainview headquarters" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-          <h3>Future Plans</h3>
-            <p>At some point, I want to work within the federal government and use the skills I learn at Google to help the country.</p>
-            <p>I also want to take a tour with the Peace Corps after college. I've heard it's a lifechanging experience, and you can do so much good.</p>
-        <h2 id="favorite-media">Favorite Media</h2>
-          <h3>My favorite poem: The More Loving One by W.H. Auden</h3>
-            <p>Looking up at the stars, I know quite well</p>
-            <p>That, for all they care, I can go to hell,</p>
-            <p>But on earth indifference is the least</p>
-            <p>We have to dread from man or beast.</p>
-            <p>---------------------------------------------</p>
-            <p>How should we like it were stars to burn</p>
-            <p>With a passion for us we could not return?</p>
-            <p>If equal affection cannot be</p>
-            <p>Let the more loving one be me.</p>
-            <p>---------------------------------------------</p>
-            <p>Admirer as I think I am</p>
-            <p>Of stars that do not give a damn,</p>
-            <p>I cannot, now I see them, say</p>
-            <p>I missed one terribly all day.</p>
-            <p>---------------------------------------------</p>
-            <p>Were all stars to disappear or die,</p>
-            <p>I should learn to look at an empty sky</p>
-            <p>And feel its total dark sublime,</p>
-            <p>Though this might take me a little time.</p>
-            <br/>
-          <h3>I also love this Youtube channel - this video especially is worth a watch.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/ipVxxxqwBQw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; 
-              gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <h3>And here are some of my favorite books and movies:</h3>
-            <img src="images/bettercallsaul (1).jpg" alt="Better Call Saul Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/callmebyyourname (1).jpg" alt="Call Me By Your Name Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/theroad (1).jpg" alt="The Road Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/thegoodplace.jpg" alt="The Good Place Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/windriver (1).jpg" alt="Wind River Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-            <img src="images/oldmanandthesea (1).jpg" alt="The Old Man and the Sea Poster" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;">
-        <h2 id="miscellaneous">Miscellaneous</h2>
-          <h3>Click here to learn some fun facts about me!</p>
-            <button onclick="addRandomFact()">Learn About Me!</button>
-            <div id="fact-container"></div>
-          <h3>And here are some personal links:</p>
-            <a href="https://www.linkedin.com/in/sean-p-casey">Linkedin</a>
-            <a href="https://github.com/spcasey">Github</a>
-            <a href="https://www.stanforddaily.com/author/spcasey/">The Stanford Daily</a>
-            <br/>
+<head>
+  <title>Sean's Portfolio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbNMqtlqZBt0ee3t97dFVUPyBP6s4Tz2c&callback=generateMap"
+    async defer></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+    // Load the Visualization API and the chart packages
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['orgchart']});
+
+    // Set a callback to run when the Google Visualization API is loaded
+    google.charts.setOnLoadCallback(drawPieChart);
+    google.charts.setOnLoadCallback(drawOrgChart);
+
+    /* 
+     * Creates and populates a data table, instantiates a pie chart, 
+     * passes in the data, and draws it.
+     */
+    function drawPieChart() {
+
+      // Create the data table
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Activity');
+      data.addColumn('number', 'Hours');
+      data.addRows([
+        ['Working', 10],
+        ['Sleeping', 8],
+        ['Socializing', 3],
+        ['Reading', 2],
+        ['Eating', 1]
+      ]);
+
+      // Set chart options
+      var options = {'title':'Sean Daily Schedule'};
+
+      // Instantiate and draw chart, passing in some options
+      var chart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
+      chart.draw(data, options);
+    }
+
+    /* 
+     * Creates and populates a data table, instantiates an org chart, passes in the data, and draws it.
+     */
+    function drawOrgChart() {
+      // Create the data table
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Name');
+      data.addColumn('string', 'Manager');
+      data.addColumn('string', 'Tooltip');
+
+      // Add people to org chart
+      data.addRows([
+        ['Abbey', '', 'Senior Director of Principal Operations'],
+        ['Courtenay', 'Abbey', 'Director of Scheduling'],
+        ['Matt', 'Abbey', 'Director of Advance'],
+        ['Derrek', 'Abbey', 'Director of Briefings and Correspondence'],
+        ['Tess', 'Abbey', 'Spouse Chief of Staff'],
+        ['Emily', 'Abbey', 'Surrogates Chief of Staff'],
+        ['Sean', 'Courtenay', 'Principal Operations Associate'],
+        ['Juliana', 'Matt', 'Advance Desk'],
+        ['David', 'Derrek', 'Correspondence Manager'],
+        ['Deion', 'Tess', 'Spouse Scheduler'],
+        ['Catherine', 'Emily', 'Surrogate Scheduler'],
+      ]);
+
+      // Create the chart
+      var chart = new google.visualization.OrgChart(document.getElementById('org-chart-container'));
+
+      // Draw the chart, setting the allowHtml option to true for the tooltips
+      chart.draw(data, {'allowHtml':true});
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Portfolio</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="about-me">About</a></li>
+          <li><a href="work-history">Work History</a></li>
+          <li><a href="myCarousel">Favorite Media</a></li>
+          <li><a href="server-tests">Server Tests</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1>Sean's Portfolio</h1>      
+      <p>Hi! My name's Sean, and I'm a STEP intern at Google. Read on to get to know me!</p>
+      <p>Contact Me!</p>
+      <a href="https://www.facebook.com/sean.casey.1297943" class="fa fa-facebook"></a>
+      <a href="https://www.linkedin.com/in/sean-p-casey" class="fa fa-linkedin"></a>
+      <a href="https://www.stanforddaily.com/author/spcasey/" class="fa fa-rss"></a>
+    </div>
+  </div>
+  
+  <div class="container-fluid bg-3 text-center">    
+    <h3 id="about-me">About Me!</h3><br>
+    <div class="row">
+      <div class="col-sm-3">
+        <p>I live in South Bend, Indiana, right by Notre Dame.</p>
+        <img src="images/notredame (1).jpg" class="img-responsive" style="width:100%" alt="Golden Dome at Notre Dame">
+      </div>
+      <div class="col-sm-3">
+        <p>I have a twin sister and two younger twin sisters.</p>
+        <img src="images/seanandsisters.jpg" class="img-responsive" style="width:100%" alt="A boy and three girls in school uniforms">
+      </div>
+      <div class="col-sm-3"> 
+        <p>I was originally born in Denver, Colorado.</p>
+        <img src="images/colorado (1).jpg" class="img-responsive" style="width:100%" alt="City of Denver with mountains in background">
+      </div>
+      <div class="col-sm-3"> 
+        <p>Next year, I'm going to be a sophomore at Stanford.</p>
+        <img src="images/stanford (1).jpg" class="img-responsive" style="width:100%" alt="Stanford courtyard with trees">
+      </div>
+    </div>
+    </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <h3 id="work-history">Work History</h3><br>    
+    <div class="row">
+      <div class="col-sm-3">
+        <p>I worked on the Buttigieg campaign last year.</p>
+        <img src="images/peteseanchasten.png" class="img-responsive" style="width:100%" alt="Three men in sweaters">
+      </div>
+      <div class="col-sm-3"> 
+        <p>I then worked for the DoJ in the Voting Section.</p>
+        <img src="images/voting.png" class="img-responsive" style="width:100%" alt="Signs directing people to the polls">
+      </div>
+      <div class="col-sm-3"> 
+        <p>I do a bit of political consulting for Clinton's speechwriter.</p>
+        <img src="images/danschwerin.png" class="img-responsive" style="width:100%" alt="A man looking at a woman writing">
+      </div>
+      <div class="col-sm-3">
+        <p>And now I'm interning for Google! I couldn't be happier.</p>
+        <img src="images/googlehq.png" class="img-responsive" style="width:100%" alt="Glass building with Google sign">
+      </div>
+    </div>
+  </div><br><br>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="images/call-me-by-your-name-6.jpg" alt="Two men holding the arm of a statue">
+        <div class="carousel-caption">
+          <h3>Call Me By Your Name</h3>
+          <p>My favorite movie of all time, and it's not even close</p>
+        </div>      
+      </div>
+      <div class="item">
+        <img src="images/bcs (1).jpg" alt="Man pointing at someone off-screen">
+        <div class="carousel-caption">
+          <h3>Better Call Saul</h3>
+          <p>Set in the world of Breaking Bad, the spin-off surpasses the original in my opinion</p>
+        </div>      
+      </div>
+      <div class="item">
+        <img src="images/the road.png" alt="Black book cover and back">
+        <div class="carousel-caption">
+          <h3>The Road</h3>
+          <p>Cormac McCarthy's masterpiece, The Road was the first book that ever made me cry</p>
+        </div>      
+      </div>
+    </div>
+
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div><br><br>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="400" height="300" src="https://www.youtube.com/embed/ipVxxxqwBQw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; 
+          gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>My Favorite Youtube Channel</p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="400" height="300" src="https://www.youtube.com/embed/BDip6DYnNVQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; 
+          gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <p>My Favorite Song</p>
+      </div>
+    </div>
+  </div><br><br>
+
+  <div class="clearfix"></div>
+
+  <div class="container text-center">    
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="images/moreloving.jpg" class="img-responsive" style="width:100%" alt="A piece of paper with text on it">
+        <p>My Favorite Poem</p>
+      </div>
+      <div class="col-sm-4">
+        <img src="images/calvin and hobbes (1).jpg" class="img-responsive" style="width:100%" alt="A comic strip of a father and son">
+        <p>My Favorite Comic Strip</p>
+      </div>
+      <div class="col-sm-4">
+        <img src="images/alaska (1).jpg" class="img-responsive" style="width:100%" alt="A fjord above a river">
+        <p>My Favorite Place (Endicott Arm in Alaska)</p>
+      </div>
+    </div>
+  </div><br><br>
+
+  <div class="container-fluid text-center" id="server-tests">    
+    <div class="row content">
+      <div class="col-sm-2 sidenav"></div>
+      <div class="col-sm-8 text-left"> 
         <h2 id="server-tests">Server Tests</h2>
-          <p>Sean's First Pie Chart</p>
-          <div id="chart_div"></div>
-          <p>How many comments would you like to display?</p>
-          <input type="number" name="comment-limit" min="0" value="5">
-          <br/>
-          <button onclick="getComments()">Fetch comments!</button>
-          <div id="comments-container"></div>
-          <form method="POST">
-            <p>What is your name?</p>
-            <textarea name="name-field"></textarea>
-            <br/>
-            <p>What are you thinking about right now?</p>
-            <textarea name="text-field"></textarea>
-            <br/>
-            <input type="submit" />
-    <div>
-  </body>
+      <h3>Map Test!</h3>
+        <div id="map"></div>
+      <h3>Daily Activities</h3>
+        <div id="pie-chart-container" style="width: 900px; height: 500px;"></div><br>
+      <h3>PFA Org Chart (mouse over for details)</h3>
+        <div id="org-chart-container"></div><br>
+      <p>How many comments would you like to display?</p>
+      <input type="number" name="comment-limit" min="0" value="5"><br>
+      <button onclick="getComments()">Fetch comments!</button>
+      <div id="comments-container"></div><br>
+        <form method="POST">
+          <p>What is your name?</p>
+          <textarea name="name-field"></textarea><br>
+          <p>What are you thinking about right now?</p>
+          <textarea name="text-field"></textarea><br>
+          <p>Translate your comment into a different language!</p>
+          <select name="languages" id="languages">
+            <option value="ar">Arabic</option>
+            <option value="zh">Chinese</option>
+            <option value="hi">Hindi</option>
+            <option value="ja">Japanese</option>
+            <option value="es">Spanish</option>
+          </select>
+          <button onclick="getTranslation();">Translate</button><br><br>
+          <input type="submit" />
+        </form>
+      </div>
+      <div class="col-sm-2 sidenav"></div>
+    </div>    
+  </div><br><br>
+
+  <footer class="container-fluid text-center">
+    <p>Have a great day!</p>
+  </footer>
+
+</body>
 </html>
